@@ -1,7 +1,13 @@
+package es.unican.is2.segurosdao;
+
 
 
 import java.util.LinkedList;
 import java.util.List;
+
+import es.unican.is2.seguroscommon.Cliente;
+import es.unican.is2.seguroscommon.ISegurosDAO;
+import es.unican.is2.seguroscommon.Seguro;
 
 public class SegurosDAO implements ISegurosDAO {
 	
@@ -13,7 +19,7 @@ public class SegurosDAO implements ISegurosDAO {
 
 	// Interfaz IVehiculosDAO
 	public Seguro creaSeguro(Seguro s) {	
-		// Por como está implementado el almacenamineto 
+		// Por como estï¿½ implementado el almacenamineto 
 		// anidado en el xml este metodo no necesita hacer nada.
 		return seguro(s.getMatricula());
 	}

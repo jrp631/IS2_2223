@@ -4,6 +4,7 @@ import es.unican.is2.segurosbusiness.GestionSeguros;
 import es.unican.is2.seguroscommon.IClientesDAO;
 import es.unican.is2.seguroscommon.ISegurosDAO;
 import es.unican.is2.segurosdao.ClientesDAO;
+import es.unican.is2.segurosdao.SegurosDAO;
 import es.unican.is2.segurosgui.VistaAgente;
 
 public class Runner {
