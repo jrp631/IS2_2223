@@ -20,7 +20,7 @@ import es.unican.is2.seguroscommon.Cliente;
 public class Aseguradora {
 	
 	// Reemplazar con el Path d�nde almacen�is el fichero ayuntamiento.xml
-	public static String DATA_FILE = "C:\\Temp\\aseguradora.xml";
+	public static String DATA_FILE = "C:\\Users\\juanr\\Desktop\\TERCERO\\Segundo Cuatrimestre\\Ingenieria Software II\\IS2_2223\\Practica3\\Practica3\\segurosdao\\aseguradora.xml";
 
 	@XmlElement(required = true, name="cliente")
 	private List<Cliente> clientes;

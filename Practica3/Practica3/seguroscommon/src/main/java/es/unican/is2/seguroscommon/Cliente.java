@@ -91,12 +91,21 @@ public class Cliente {
     	minusvalia = minus;
     }
     
+
     /**
      * Calcula el total a pagar por el cliente por 
      * todos los seguros a su nombre
      */
     public double totalSeguros() {
-    	return 0;
+        double importe = 0;
+        for (Seguro seguro : seguros) {
+            if (minusvalia) {
+                importe += seguro.precio()*(100-25);
+            } else{
+                importe += seguro.precio() ;
+            }
+        }
+    	return importe;
     }
 
 }

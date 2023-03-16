@@ -93,7 +93,37 @@ public class Seguro {
      * @return
      */
     public double precio() {
-    	return 0;
+    	//1. Nivel de covertura contratado 
+		//2. Potecia del coche 
+		// Oferta
+		double precio = 0;
+		
+		switch(getCobertura()) { //nivel de cobertura
+			case TODORIESGO:
+				precio = 1000;
+			case TERCEROSLUNAS:
+				precio = 600;
+			case TERCEROS:
+				precio = 400;
+		}
+
+		if (getPotencia() >= INICIO_TRAMO_1 && getPotencia() <= FIN_TRAMO_1) { //potenica del coche
+			precio += precio*0.05;
+		} else if (getPotencia() > 110){
+			precio += precio*0.2;
+		}
+
+		LocalDate localDate = LocalDate.now();
+		
+		int anho = fechaContratacion.getYear() - localDate.getYear();
+
+		if (anho < 1) {
+			precio = precio*DESCUENTO_PRIMER_ANHO;
+		} else if (anho == 1) {
+			precio = precio*DESCUENTO_SEGUNDO_ANHO;
+		}
+
+		return precio;
     }
 
 }

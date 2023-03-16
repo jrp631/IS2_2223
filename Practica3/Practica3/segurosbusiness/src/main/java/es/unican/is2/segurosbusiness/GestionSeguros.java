@@ -1,5 +1,8 @@
 package es.unican.is2.segurosbusiness;
 
+import java.util.List;
+
+
 import es.unican.is2.seguroscommon.Cliente;
 import es.unican.is2.seguroscommon.IClientesDAO;
 import es.unican.is2.seguroscommon.IGestionClientes;
@@ -12,9 +15,12 @@ import es.unican.is2.seguroscommon.Seguro;
 
 public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionSeguros{
 
-    public GestionSeguros(IClientesDAO daoContribuyentes, ISegurosDAO daoVehiculos) {
-        //constructor vacio que tenemos que terminar
+	IClientesDAO daoContribuyentes;
+	ISegurosDAO daoVehiculos;
 
+    public GestionSeguros(IClientesDAO daoContribuyentes, ISegurosDAO daoVehiculos) {
+			this.daoContribuyentes = daoContribuyentes;
+			this.daoVehiculos = daoVehiculos;
     }
     	/**
 	 * A�ade un nuevo cliente
@@ -23,9 +29,9 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
 	 * 		   null si no se a�ade porque ya existe
 	 */
 	public Cliente nuevoCliente(Cliente c) {
-        Cliente cliente = new Cliente();
-        return cliente;
-    }
+	
+		return daoContribuyentes.creaCliente(c);
+	}	
 	
 	/**
 	 * Elimina el cliente cuyo dni se pasa como par�metro
@@ -36,10 +42,9 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
 	 *         pero tiene seguros a su nombre
 	 */
 	public Cliente bajaCliente(String dni) throws OperacionNoValida {
-        Cliente c = new Cliente();
-        return c;
-    }
-
+		
+		return daoContribuyentes.eliminaCliente(dni);
+	}
     /**
 	 * Retorna el cliente cuyo dni se pasa como par�metro
 	 * @param dni DNI del cliente buscado
@@ -47,8 +52,9 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
 	 * 		   null en caso de que no exista
 	 */
 	public Cliente cliente(String dni) {
-        Cliente c = new Cliente();
-        return c;
+
+		return daoContribuyentes.cliente(dni);
+		
     }
 	
 	/**
@@ -58,9 +64,9 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
 	 * 	       null si no existe
 	 */
 	public Seguro seguro(String matricula) {
-        Seguro s = new Seguro();
-        return s;
-    }
+
+		return daoVehiculos.seguro(matricula);
+	}
 
 /**
 	 * A�ade un nuevo seguro al cliente cuyo dni se pasa
@@ -72,7 +78,17 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
 	 * @throws OperacionNoValida si el seguro ya existe
 	 */
 	public Seguro nuevoSeguro(Seguro s, String dni) throws OperacionNoValida {
-        return s;
+		
+		Cliente c = cliente(dni);
+		if (c == null) { //no existe el cliente
+			return null;
+		}
+		
+		List<Seguro> seguros = c.getSeguros();
+		if (seguros.contains(s)) {
+			throw new OperacionNoValida("Seguro ya existe");
+		}
+		return daoVehiculos.creaSeguro(s);
     }
 	
 	/**
@@ -85,8 +101,18 @@ public class GestionSeguros implements IGestionClientes, IInfoSeguros, IGestionS
  	 * @throws OperacionNoValida si el seguro no pertenece al dni indicado
 	 */
 	public Seguro bajaSeguro(String matricula, String dni) throws OperacionNoValida {
-        Seguro s = new Seguro();
-        return s;
+		
+		Cliente cliente = cliente(dni);
+		Seguro seguro = seguro(matricula);
+        if (seguro == null || cliente == null) {
+			return null;
+		}
+
+        List<Seguro> seguros = cliente.getSeguros();
+		if (!seguros.contains(seguro)) {
+			throw new OperacionNoValida("El seguro no pertenece al dni indicado");
+		}
+		return daoVehiculos.eliminaSeguro(matricula);
     }
 
 }
