@@ -14,11 +14,7 @@
   <url>http://www.example.com</url>
   <packaging>jar</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>19.0.2</maven.compiler.source>
-    <maven.compiler.target>19.0.2</maven.compiler.target>
-  </properties>
+  
 
   <dependencies>
     <dependency>
