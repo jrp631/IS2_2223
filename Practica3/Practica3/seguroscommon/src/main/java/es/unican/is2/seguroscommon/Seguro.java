@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "Seguro")
 public class Seguro {
 	
-	private static final double PORCENTAJE_TRAMO_1 = 0.95;
-	private static final double PORCENTAJE_TRAMO_2 = 0.80;
+	//private static final double PORCENTAJE_TRAMO_1 = 0.95;
+	//private static final double PORCENTAJE_TRAMO_2 = 0.80;
 	private static final int INICIO_TRAMO_1= 90;
 	private static final int FIN_TRAMO_1=110;
 	private static final double DESCUENTO_PRIMER_ANHO = 0.8;
