@@ -31,8 +31,16 @@ public class Cliente {
     @XmlAttribute(required = true)
     private boolean minusvalia;
     
+    private static int DESCUENTO = 25;
     
     public Cliente(){}  
+
+    
+    public Cliente(String nombre, String dni, boolean minusvalia) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.minusvalia = minusvalia;
+    }
 
 	/**
      * Retorna los seguros del cliente 
@@ -99,12 +107,16 @@ public class Cliente {
     public double totalSeguros() {
         double importe = 0;
         for (Seguro seguro : seguros) {
-            if (minusvalia) {
-                importe += seguro.precio()*(100-25);
+            if (this.minusvalia){
+                System.out.println("Calculando para minusvalido");
+                Double precio = seguro.precio();
+                importe += ((100-DESCUENTO)*precio)/100;
+                
             } else{
                 importe += seguro.precio() ;
             }
         }
+        System.out.println("Importe Seguro -> " + importe);
     	return importe;
     }
 

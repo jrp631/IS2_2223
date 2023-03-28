@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.PrintConversionEvent;
+
 import org.junit.jupiter.api.*;
 
 
@@ -60,7 +62,7 @@ public class ClienteTest {
         //con un solo seguro en la lista
         seguros.add(seguro1);
         clienteMinusvalido.setSeguros(seguros);        
-        assertTrue(precioCorrecto(clienteNoMinusvalido, 630.0));//FIXME -> CAMBIAR EL PRECIO
+        assertTrue(precioCorrecto(clienteMinusvalido, 630.0));//FIXME -> CAMBIAR EL PRECIO
         
         //con mas de un elemento en la lista 
         seguros.add(seguro2);

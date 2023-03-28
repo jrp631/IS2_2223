@@ -44,3 +44,13 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# Archivos de configuración de Eclipse
+.metadata/
+.recommenders/
+.classpath
+.project
+.settings/
+bin/
+# Directorio de artefactos generados en Maven
+target/

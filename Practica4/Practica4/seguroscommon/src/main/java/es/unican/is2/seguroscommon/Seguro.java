@@ -1,3 +1,4 @@
+
 package es.unican.is2.seguroscommon;
 
 
@@ -103,34 +104,39 @@ public class Seguro {
 		//2. Potecia del coche 
 		// Oferta
 		double precio = 0;
-		
+		System.out.println(getCobertura());
+
 		switch(getCobertura()) { //nivel de cobertura
 			case TODORIESGO:
 				precio = 1000;
+				break;
 			case TERCEROSLUNAS:
 				precio = 600;
+				break;
 			case TERCEROS:
 				precio = 400;
+				break;
 		}
+		
 
 		if (getPotencia() >= INICIO_TRAMO_1 && getPotencia() <= FIN_TRAMO_1) { //potenica del coche
 			precio += precio*0.05;
 		} else if (getPotencia() > 110){
 			precio += precio*0.2;
 		}
+		System.out.println(precio);
 
 		LocalDate localDate = LocalDate.now();
 		
-		int anho = fechaContratacion.getYear() - localDate.getYear();
+		int anho = localDate.getYear() - fechaContratacion.getYear();
 
 		if (anho < 1) {
 			precio = precio*DESCUENTO_PRIMER_ANHO;
 		} else if (anho == 1) {
 			precio = precio*DESCUENTO_SEGUNDO_ANHO;
 		}
-
+		System.out.println(precio);
 		return precio;
     }
 
 }
-
