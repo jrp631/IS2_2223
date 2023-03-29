@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.PrintConversionEvent;
-
 import org.junit.jupiter.api.*;
 
 
@@ -16,8 +14,8 @@ public class ClienteTest {
     private static final int INICIO_TRAMO_1= 90;
 	private static final int FIN_TRAMO_1=110;
 	private static final int TRAMO_INTERMEDIO=95;
-	private static final int TRAMO_MAYOR=115;
-	private static final int TRAMO_MENOR=80;
+	//private static final int TRAMO_MAYOR=115;
+	//private static final int TRAMO_MENOR=80;
 
     
     private static Cliente clienteNoMinusvalido;
@@ -30,8 +28,8 @@ public class ClienteTest {
     //declaracion de fechas
     private static LocalDate fechaActual = LocalDate.now();
     private static LocalDate fechaMenosUnAnhos = LocalDate.now().minusMonths(12);
-    private static LocalDate fechaMenossUnDia = LocalDate.now().minusDays(1);
-    private static LocalDate fechaMenosDosAnhos = LocalDate.now().minusMonths(24);
+    //private static LocalDate fechaMenossUnDia = LocalDate.now().minusDays(1);
+    //private static LocalDate fechaMenosDosAnhos = LocalDate.now().minusMonths(24);
 
 
     @BeforeAll
@@ -62,16 +60,16 @@ public class ClienteTest {
         //con un solo seguro en la lista
         seguros.add(seguro1);
         clienteMinusvalido.setSeguros(seguros);        
-        assertTrue(precioCorrecto(clienteMinusvalido, 630.0));//FIXME -> CAMBIAR EL PRECIO
+        assertTrue(precioCorrecto(clienteMinusvalido, 630.0));//  -> CAMBIAR EL PRECIO
         
         //con mas de un elemento en la lista 
         seguros.add(seguro2);
         clienteMinusvalido.setSeguros(seguros); 
-        assertTrue(precioCorrecto(clienteMinusvalido, 1055.25)); //FIXME -> CAMBIAR EL PRECIO
+        assertTrue(precioCorrecto(clienteMinusvalido, 1055.25)); //  -> CAMBIAR EL PRECIO
 
         seguros.add(seguro3);
         clienteMinusvalido.setSeguros(seguros); 
-        assertTrue(precioCorrecto(clienteMinusvalido, 1307.25)); //FIXME -> CAMBIAR EL PRECIO
+        assertTrue(precioCorrecto(clienteMinusvalido, 1307.25)); //  -> CAMBIAR EL PRECIO
         
     }
 

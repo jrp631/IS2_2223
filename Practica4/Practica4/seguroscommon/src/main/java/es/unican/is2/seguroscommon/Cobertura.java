@@ -10,5 +10,8 @@ public enum Cobertura {
 	
 	TERCEROS, TODORIESGO, TERCEROSLUNAS;
     
-
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }
