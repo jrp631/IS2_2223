@@ -23,9 +23,6 @@ import es.unican.is2.segurosgui.VistaAgente;
 public class RunnerTest {
 
     private FrameFixture demo;
-    private IGestionClientes clientes;
-    private IGestionSeguros seguros;
-    private IInfoSeguros infoSeguros;
     
     private IClientesDAO daoContribuyentes = new ClientesDAO();
 	private ISegurosDAO daoVehiculos = new SegurosDAO();
@@ -51,34 +48,83 @@ public class RunnerTest {
         return false;
     }
     /**
-     * Rigorous Test :-)
+     * Test para casos no validos
      * @throws InterruptedException
      */
     @Test
-    public void test(){ 
+    public void  casosValidos(){ 
         // test primer cliente
-        try {
             
-            demo.button("btnBuscar").requireText("Buscar");
-            demo.textBox("txtDNICliente").enterText("12345678S");
-            demo.button("btnBuscar").click();   
-            
-            //Cliente
-
-            //nombre del cliente
-            demo.textBox("txtNombreCliente").requireText("Andrés Ortega");
-
-
-            //lista de seguros 
-            demo.list("listSeguros").requireItemCount(1); //FIXME -> averiguar cual es el numero requerido que toca            //4 -> numero de elementos del seguro que se muestran por pantalla
-            String cobertura_matricla = demo.list("listSeguros").valueAt(0);//TODO -> ver como es la salida por consola que muestra la lista
-            System.out.println(cobertura_matricla);
-            assertTrue(comparaValores(cobertura_matricla , "PLL9597 TODORIESGO"));
+        demo.button("btnBuscar").requireText("Buscar");
+        demo.textBox("txtDNICliente").enterText("12345678S");
+        demo.button("btnBuscar").click();   
         
-            //precio total
-            demo.textBox("txtTotalCliente").requireText("675.0");
-        } catch (AssertionError e) {
-            fail("Algo ha ido mal");
-        }
+        //Cliente
+
+        //nombre del cliente
+        demo.textBox("txtNombreCliente").requireText("Andrés Ortega");
+
+        //lista de seguros //cliente con un solo seguro a su nombre
+        demo.list("listSeguros").requireItemCount(1); //FIXME -> averiguar cual es el numero requerido que toca            //4 -> numero de elementos del seguro que se muestran por pantalla
+        String cobertura_matricla = demo.list("listSeguros").valueAt(0);//TODO -> ver como es la salida por consola que muestra la lista
+        System.out.println(cobertura_matricla);
+        assertTrue(comparaValores(cobertura_matricla , "PLL9597 TODORIESGO"));
+    
+        //precio total
+        demo.textBox("txtTotalCliente").requireText("675.0");
+
+        demo.textBox("txtDNICliente").setText("");
+        //segundo cliente
+        demo.button("btnBuscar").requireText("Buscar");
+        demo.textBox("txtDNICliente").enterText("12345678F");
+        demo.button("btnBuscar").click();
+
+        //nombre del cliente
+        demo.textBox("txtNombreCliente").requireText("Pablo López");
+
+        //lista de seguros, cliente con mas de un seguro a su nombre
+        demo.list("listSeguros").requireItemCount(2); 
+        String[] cobertura_matricula = new String[2];
+        cobertura_matricula[0] = demo.list("listSeguros").valueAt(0);
+        cobertura_matricula[1] = demo.list("listSeguros").valueAt(1);
+
+        assertTrue(comparaValores(cobertura_matricula[0], "PLX9597 TODORIESGO"));
+        assertTrue(comparaValores(cobertura_matricula[1], "PLX9797 TERCEROS"));
+        
+        demo.textBox("txtTotalCliente").requireText("1450.0"); //Calcular total de los seguros
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
+
+    /**
+     * 
+     */
+    @Test
+     public void casosNoValidos() { //TODO
+        //Caso -> introducimos el dni de un cliente no existente
+        demo.button("btnBuscar").requireText("Buscar");
+
+        demo.textBox("txtDNICliente").setText("");//borramos el texto anterior
+        demo.textBox("txtDNICliente").enterText("AAAAA"); //DNI que no se encuentra en el xml
+        demo.button("btnBuscar").click();  
+
+        demo.textBox("txtNombreCliente").requireText(""); //nombre vacio
+
+        //lista de seguros //cliente con un solo seguro a su nombre
+        demo.list("listSeguros").requireItemCount(0); //
+                
+        demo.textBox("txtTotalCliente").requireText("");
+        try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
 }
