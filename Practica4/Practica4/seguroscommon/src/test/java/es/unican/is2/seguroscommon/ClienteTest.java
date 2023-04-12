@@ -27,7 +27,7 @@ public class ClienteTest {
 
     //declaracion de fechas
     private static LocalDate fechaActual = LocalDate.now();
-    private static LocalDate fechaMenosUnAnhos = LocalDate.now().minusMonths(12);
+    private static LocalDate fechaUnAnhos = LocalDate.now().minusMonths(12);
     //private static LocalDate fechaMenossUnDia = LocalDate.now().minusDays(1);
     //private static LocalDate fechaMenosDosAnhos = LocalDate.now().minusMonths(24);
 
@@ -38,7 +38,7 @@ public class ClienteTest {
         clienteNoMinusvalido = new Cliente("ClienteNoMinusvalido", "987654321z", false);        
         
         seguro1 = new Seguro(TRAMO_INTERMEDIO, Cobertura.TODORIESGO, fechaActual);
-        seguro2 = new Seguro(INICIO_TRAMO_1, Cobertura.TERCEROSLUNAS, fechaMenosUnAnhos);
+        seguro2 = new Seguro(INICIO_TRAMO_1, Cobertura.TERCEROSLUNAS, fechaUnAnhos);
         seguro3 = new Seguro(FIN_TRAMO_1, Cobertura.TERCEROS, fechaActual);
     }
 

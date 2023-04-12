@@ -38,7 +38,7 @@ public class SeguroTest { // - > ARREGLAR FECHAS
 
         //CASOS VALIDOS
         LocalDate fechaActual = LocalDate.now();
-        LocalDate fechaMenosUnAnhos = LocalDate.now().minusMonths(12);
+        LocalDate fechaUnAnhos = LocalDate.now().minusMonths(12);
         LocalDate fechaMenossUnDia = LocalDate.now().minusDays(1);
         LocalDate fechaMenosDosAnhos = LocalDate.now().minusMonths(24);
 
@@ -47,7 +47,7 @@ public class SeguroTest { // - > ARREGLAR FECHAS
         //Prueba 1 
         assertTrue(precioCorrecto(seguro1, 840.0));
 
-        Seguro seguro2 = new Seguro(INICIO_TRAMO_1, Cobertura.TERCEROSLUNAS, fechaMenosUnAnhos);
+        Seguro seguro2 = new Seguro(INICIO_TRAMO_1, Cobertura.TERCEROSLUNAS, fechaUnAnhos);
         assertTrue(precioCorrecto(seguro2, 567.0)); // -> arreglar precio 
 
         Seguro seguro3 = new Seguro(FIN_TRAMO_1, Cobertura.TERCEROS, fechaActual);
@@ -59,10 +59,12 @@ public class SeguroTest { // - > ARREGLAR FECHAS
         Seguro seguro5 = new Seguro(TRAMO_MENOR, Cobertura.TODORIESGO, fechaMenosDosAnhos);
         assertTrue(precioCorrecto(seguro5,1000.0 ));// -> arreglar precio
         
+
+        
         // CASOS NO VALIDOS
         
           
-        Seguro seguro6 = new Seguro(INICIO_TRAMO_1, null, fechaMenosUnAnhos);
+        Seguro seguro6 = new Seguro(INICIO_TRAMO_1, null, fechaUnAnhos);
         try {
             assertThrows(NullPointerException.class, () -> precioCorrecto(seguro6, 567.0));
         } catch (AssertionError e) {
