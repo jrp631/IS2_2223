@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import es.unican.is2.segurosbusiness.GestionSeguros;
 import es.unican.is2.seguroscommon.IClientesDAO;
-import es.unican.is2.seguroscommon.IGestionClientes;
-import es.unican.is2.seguroscommon.IGestionSeguros;
-import es.unican.is2.seguroscommon.IInfoSeguros;
 import es.unican.is2.seguroscommon.ISegurosDAO;
 import es.unican.is2.segurosdao.ClientesDAO;
 import es.unican.is2.segurosdao.SegurosDAO;
@@ -62,7 +59,7 @@ public class RunnerTest {
         //Cliente
 
         //nombre del cliente
-        demo.textBox("txtNombreCliente").requireText("Andrés Ortega");
+        demo.textBox("txtNombreCliente").requireText("AndrÃ©s Ortega");
 
         //lista de seguros //cliente con un solo seguro a su nombre
         demo.list("listSeguros").requireItemCount(1); //FIXME -> averiguar cual es el numero requerido que toca            //4 -> numero de elementos del seguro que se muestran por pantalla
@@ -87,7 +84,7 @@ public class RunnerTest {
         demo.button("btnBuscar").click();
 
         //nombre del cliente
-        demo.textBox("txtNombreCliente").requireText("Pablo López");
+        demo.textBox("txtNombreCliente").requireText("Pablo LÃ³pez");
 
         //lista de seguros, cliente con mas de un seguro a su nombre
         demo.list("listSeguros").requireItemCount(2); 
@@ -113,7 +110,7 @@ public class RunnerTest {
         demo.button("btnBuscar").click();
         
         //nombre del cliente
-        demo.textBox("txtNombreCliente").requireText("Lucía Rodriguez");
+        demo.textBox("txtNombreCliente").requireText("LucÃ­a Rodriguez");
 
         //lista de seguros //cliente con un solo seguro a su nombre
         demo.list("listSeguros").requireItemCount(1); //FIXME -> averiguar cual es el numero requerido que toca            //4 -> numero de elementos del seguro que se muestran por pantalla

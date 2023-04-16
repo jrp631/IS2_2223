@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 import org.junit.jupiter.api.*;;
 
-public class SeguroTest { // - > ARREGLAR FECHAS 
+public class SeguroITest { // - > ARREGLAR FECHAS 
     
     private static final int INICIO_TRAMO_1= 90;
 	private static final int FIN_TRAMO_1=110;
