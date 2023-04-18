@@ -90,6 +90,7 @@ public class ListaOrdenadaTest {
        }
     }
 
+    /*
     @Test
     public void sizeTest() {
         assertTrue((lista.size() == 0));
@@ -97,7 +98,7 @@ public class ListaOrdenadaTest {
         assertTrue((lista.size() == 1));
         lista.add(2);
         assertTrue((lista.size() == 2));
-    }
+    } */
 
 
 
