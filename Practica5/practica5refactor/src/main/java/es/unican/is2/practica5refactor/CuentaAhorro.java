@@ -33,7 +33,7 @@ public class CuentaAhorro extends Cuenta {
 		saldoSuficiente(x);
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
-		m.setMovimiento("Retirada de efectivo", x, now);
+		m.setMovimiento("Retirada de efectivo", -x, now);
 		this.mMovimientos.add(m);
 
 	}
@@ -51,7 +51,7 @@ public class CuentaAhorro extends Cuenta {
 		cantidadNoNegativa(x, "No se puede retirar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
-		m.setMovimiento(concepto, x, now);
+		m.setMovimiento(concepto, -x, now);
 		this.mMovimientos.add(m);
 	}
 

@@ -8,6 +8,10 @@ import java.util.List;
 
 public class Credito extends Tarjeta {
 	
+	/**
+	 *
+	 */
+	private static final double COMISION = 0.05;
 	private double mCredito;
 	private List<Movimiento> mMovimientosMensuales;
 	private List<Movimiento> mhistoricoMovimientos;
@@ -34,7 +38,7 @@ public class Credito extends Tarjeta {
 		LocalDateTime now = LocalDateTime.now();
 		//m.setFecha(now);
 		//m.setConcepto("Retirada en cajero autom�tico");
-		x += x * 0.05; // A�adimos una comisi�n de un 5%
+		x += x * COMISION; // A�adimos una comisi�n de un 5%
 		//m.setImporte(-x);
 		m.setMovimiento("Retirada en cajero autom�tico", -x, now);
 		
