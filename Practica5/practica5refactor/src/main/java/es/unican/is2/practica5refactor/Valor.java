@@ -40,7 +40,7 @@ public class Valor {
 	@Override
 	public boolean equals(Object obj) { // WCM + 1 
 		Valor other = (Valor)obj;
-		return (entidad.equals(other.entidad) & numAcciones==other.numAcciones);
+		return (entidad.equals(other.entidad) & numAcciones==other.numAcciones); // WCM + 1 Cog + 1 
 
 	}
 	

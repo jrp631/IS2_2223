@@ -64,12 +64,12 @@ public class CuentaAhorro extends Cuenta {
 		return r;
 	}
 
-	public void cantidadNoNegativa(double x, String mensaje) {
+	public void cantidadNoNegativa(double x, String mensaje) { // WCM + 1 
 		if (x <= 0) // WCM + 1 //Cog + 1
 			throw new datoErroneoException(mensaje);
 	}
 
-	public void saldoSuficiente(double x) {
+	public void saldoSuficiente(double x) { // WCM + 1 
 		if (getSaldo() < x)// WCM + 1 //Cog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 	}
@@ -95,7 +95,7 @@ public class CuentaAhorro extends Cuenta {
 	}
 
 	@Override
-	public double totalCuenta() {
+	public double totalCuenta() { // WCM + 1 
 
 		return getSaldo();
 

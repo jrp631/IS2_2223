@@ -49,7 +49,7 @@ public class Credito extends Tarjeta {
 		}
 	}
 
-	private void datoValido(double x) {
+	private void datoValido(double x) { // WCM + 1 
 		if (x<0) // WCM + 1 //Cog + 1
 			throw new datoErroneoException("No se puede retirar una cantidad negativa");
 	}
@@ -99,7 +99,7 @@ public class Credito extends Tarjeta {
 		mMovimientosMensuales.clear();
 	}
 
-	private double importeTotal(double r) {
+	private double importeTotal(double r) { // WCM + 1 
 		for (int i = 0; i < this.mMovimientosMensuales.size(); i++) { // WCM + 1 //Cog + 1
 			Movimiento m = (Movimiento) mMovimientosMensuales.get(i);
 			r += m.getImporte();

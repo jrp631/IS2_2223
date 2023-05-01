@@ -18,7 +18,7 @@ public class Debito extends Tarjeta {
 		saldoDiarioDisponible-=x;
 	}
 
-	private void saldoSuficiente(double x) {
+	private void saldoSuficiente(double x) { // WCM + 1 
 		if (saldoDiarioDisponible<x) {// WCM + 1 //Cog + 1
 			throw new saldoInsuficienteException("Saldo insuficiente");
 		}

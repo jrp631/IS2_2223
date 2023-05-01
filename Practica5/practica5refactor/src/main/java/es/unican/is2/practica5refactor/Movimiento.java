@@ -31,7 +31,7 @@ public class Movimiento {
 		mFecha = newMFecha;
 	}
 
-	public void setMovimiento (String concepto, double x,LocalDateTime now) {
+	public void setMovimiento (String concepto, double x,LocalDateTime now) { // WCM + 1 
 		setConcepto(concepto);
 		setImporte(x);
 		setFecha(now);

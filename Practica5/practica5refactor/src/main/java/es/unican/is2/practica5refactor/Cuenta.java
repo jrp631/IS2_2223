@@ -12,6 +12,6 @@ public abstract class Cuenta {
 		return numCuenta;
 	}
 	
-	public abstract double totalCuenta();
+	public abstract double totalCuenta(); // WCM + 1 
 	
 }

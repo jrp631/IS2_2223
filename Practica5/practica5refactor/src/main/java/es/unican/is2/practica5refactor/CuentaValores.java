@@ -27,10 +27,10 @@ public class CuentaValores extends Cuenta {
 	}
 
 	@Override
-	public double totalCuenta() {
+	public double totalCuenta() { // WCM + 1 
 		// TODO Auto-generated method stub
 		double total = 0.0;
-		for (Valor v: valores) { // WCM + 1 //Cog + 3 
+		for (Valor v: valores) { // WCM + 1 //Cog + 1
 			total += v.getCotizacion()*v.getNumValores();
 		}
 		return total;
